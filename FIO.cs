@@ -13,7 +13,28 @@ namespace zadanie_labN6
             first_name,
             patronynic,
             full_name;
-
+        public string Last
+        {
+            get => last_name;
+            set => last_name = value;
+        }
+        public string First {
+            get => first_name;
+            set => first_name = value;
+        }
+        public string Patronynic
+        {
+            get => patronynic;
+            set => patronynic = value;
+        }
+        public string Full
+        {
+            get
+            {
+                full_name = $"{last_name} {first_name} {patronynic}";
+                return full_name;
+            }
+        }
         public bool SetBool()
         {
 

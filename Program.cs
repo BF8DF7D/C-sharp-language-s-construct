@@ -22,7 +22,10 @@ namespace zadanie_labN6
             doctor.SetDoctor();
             Console.WriteLine();
             doctor.PrintInfo();
-
+            Console.WriteLine("\n");
+            doctor.fio.Last = "Демидов";
+            doctor.fio.Patronynic = "Сергеевич";
+            Console.WriteLine($"ФИО доктора [изменённое]: {doctor.fio.Full}\n");
             Console.WriteLine("\n");
 
             Talon talon = new Talon();

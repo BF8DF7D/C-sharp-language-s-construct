@@ -10,6 +10,10 @@ namespace zadanie_labN6
     {
         private FIO Fio;
         private string dolgnost;
+        public FIO fio
+        {
+            get => Fio;
+        }
 
         public void SetDoctor()
         {

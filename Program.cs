@@ -6,9 +6,19 @@ namespace zadanie_labN6
     {
         static void Main(string[] args)
         {
+            Console.WriteLine();
 
-            Disease prosrtuda = new Disease(),
-            otravlenie = new Disease();
+            Disease prosrtuda = new("Простуда"),
+            otravlenie = new("Отравление");
+
+            Console.WriteLine($" Есть заболевание №1       : {prosrtuda.GetName()}");
+            Console.WriteLine($" И есть заболевание №2     : {otravlenie.GetName()}");
+            otravlenie = prosrtuda;
+            Console.WriteLine($" Копия №1 в №2             : {otravlenie.GetName()}\n");
+            Console.WriteLine($" Изменёним значение №1 на  : Заболевание");
+            prosrtuda.SetName("Заболевание");
+            Console.WriteLine($" Изменённое значение №1    : {prosrtuda.GetName()}");
+            Console.WriteLine($" Значение №2               : {otravlenie.GetName()}\n");
 
             prosrtuda.SetDisease();
             Console.WriteLine();

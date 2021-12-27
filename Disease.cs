@@ -52,5 +52,16 @@ namespace zadanie_labN6
         {
             Disease_Symptoms = new string[51];
         }
+        
+        public Disease(string name)
+        {
+            Name_Disease = name; 
+            Disease_Symptoms = new string[51];
+        }
+        public void SetName(string name)
+        {
+            Name_Disease = name;
+        }
+
     }
 }

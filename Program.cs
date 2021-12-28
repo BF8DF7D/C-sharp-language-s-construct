@@ -20,6 +20,13 @@ namespace zadanie_labN6
             Console.WriteLine($" Изменённое значение №1    : {prosrtuda.GetName()}");
             Console.WriteLine($" Значение №2               : {otravlenie.GetName()}\n");
 
+            RefOutTest Test = new RefOutTest();
+            int uref = 0;
+            int uout;
+            Test.UseOut(out uout);
+            Console.WriteLine($" Значение uout после метода : {uout}");
+            Test.UseRef(ref uref);
+           
             prosrtuda.SetDisease();
             Console.WriteLine();
             otravlenie.SetDisease();

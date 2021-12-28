@@ -65,6 +65,37 @@ namespace zadanie_labN6
             Console.WriteLine($"| {GetDoctor().GetFIO().GetFullName(), 45} | {GetDate().GetFormatDate()} | {GetTime().GetFormatTime()} | {GetKabinet(), 3}|"); 
         }
 
+        public static Talon operator+(Talon talon, string time)
+        {
+            string[] input_values = Console.ReadLine().Split("\\.");
+            const int Quantity_input_value = 2;
+            bool False_input_value = input_values.Length != Quantity_input_value;
+            
+            Talon Value = new Talon();
+            if (False_input_value)
+                return Value;
+
+            int[] value_of_int = new int[2];
+            int value_number = 0;
+
+            foreach (string string_value in input_values) 
+                try
+                {
+                    value_of_int[value_number++] = Convert.ToInt32(string_value);
+                }
+                catch (Exception e)
+                {
+                    return Value;
+                }
+
+            const int Quantity_minutes_for_hour = 60,
+                Quantity_hours_for_days = 24,
+                Quantity_days_for_mounths = 31,
+                Quantity_mounth_for_year = 12;
+
+            return Value;
+        }
+
         public Date GetDate()
         {
             return Admission_Date;

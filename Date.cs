@@ -13,6 +13,24 @@ namespace zadanie_labN6
             year;
         private string formatDate;
 
+        internal int Day { 
+            get => day;
+            set => day = value;
+        }
+        internal int Mounth { 
+            get => mounth; 
+            set => mounth = value;
+        }
+        internal int Year { 
+            get => year;
+            set => year = value;
+        }
+        internal string FormatDate
+        {
+            get => formatDate;
+            set => formatDate = value;
+        }
+
         public void SetFormat()
         {
             bool False_Input_Value;
@@ -49,9 +67,9 @@ namespace zadanie_labN6
                 }
             }
 
-            const int day = 0,
-                mounth = 1,
-                year = 2;
+            int day = date[0],
+                mounth = date[1],
+                year = date[2];
 
             const int Minimum_for_days_and_months = 0,
                 Maximum_day = 31,
@@ -59,20 +77,25 @@ namespace zadanie_labN6
                 Minimum_value_for_years = 999,
                 Maximum_years = 9999;
 
-            False_input_value = (date[day] <= Minimum_for_days_and_months || date[day] > Maximum_day)
-                || (date[mounth] <= Minimum_for_days_and_months || date[mounth] > Maximum_mounth)
-                || (date[year] <= Minimum_value_for_years || date[year] > Maximum_years);
+            False_input_value = (day <= Minimum_for_days_and_months || day > Maximum_day)
+                || (mounth <= Minimum_for_days_and_months || mounth > Maximum_mounth)
+                || (year <= Minimum_value_for_years || year > Maximum_years);
             if (False_input_value)
                 return False_input_value;
 
-            formatDate = $"{date[day]:d2}.{date[mounth]:d2}.{date[year]}";
-            this.day = date[day];
-            this.mounth = date[mounth];
-            this.year = date[year];
+            formatDate = $"{day:d2}.{mounth:d2}.{year}";
+            this.day = day;
+            this.mounth = mounth;
+            this.year = year;
 
             return False_input_value;
         }
-
+        public int[] GetFullInfo()
+        {
+            int[] info = { day, mounth, year };
+            formatDate = $"{day:d2}.{mounth:d2}.{year}";
+            return info;
+        }
         public int GetDay()
         {
             return day;

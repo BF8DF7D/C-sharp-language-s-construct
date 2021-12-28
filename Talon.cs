@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace zadanie_labN6
 {
-    class Talon
+    class Talon : ICloneable
     {
         private Date Admission_Date;
         private Time Admission_Time;
@@ -62,9 +62,45 @@ namespace zadanie_labN6
         }
         public void PrintInfo()
         {
-            Console.WriteLine($"| {GetDoctor().GetFIO().GetFullName(), 45} | {GetDate().GetFormatDate()} | {GetTime().GetFormatTime()} | {GetKabinet(), 3}|"); 
+            Console.WriteLine($"| {medic.Fio.Full, 45} | {Admission_Date.FormatDate} | {Admission_Time.FormatTime} | {kabinet, 3}|"); 
         }
 
+        public static Talon operator+(Talon talon, string time)
+        {
+            string[] input_values = time.Split(".");
+            const int Quantity_input_value = 2;
+            bool False_input_value = input_values.Length != Quantity_input_value;
+            if (False_input_value)
+                return null;
+            Talon value = (Talon)talon.Clone();
+            int[] inttime = new int[2];
+            int value_number = 0;
+
+            foreach (string string_value in input_values) 
+                try
+                {
+                    inttime[value_number++] = Convert.ToInt32(string_value);
+                }
+                catch (Exception e)
+                {
+                    return null;
+                }
+
+            value.Admission_Time.ChangeTime(inttime, value.Admission_Date);
+
+            return value;
+        }
+
+        public static Talon operator ++(Talon talon)
+        {
+            return new Talon
+            {
+                Admission_Time = talon.Admission_Time,
+                Admission_Date = talon.Admission_Date,
+                kabinet = talon.kabinet + 1,
+                medic = talon.medic
+            };
+        }
         public Date GetDate()
         {
             return Admission_Date;
@@ -86,6 +122,29 @@ namespace zadanie_labN6
             Admission_Date = null;
             Admission_Time = null;
             medic = null;
+        }
+        public object Clone()
+        {
+            Time Time_for_admission = new()
+            {
+                Hour = this.Admission_Time.Hour,
+                Minutes = this.Admission_Time.Minutes,
+                FormatTime = this.Admission_Time.FormatTime
+            };
+            Date Date_for_admission = new()
+            {
+                Day = this.Admission_Date.Day,
+                Mounth = this.Admission_Date.Mounth,
+                Year = this.Admission_Date.Year,
+                FormatDate = this.Admission_Date.FormatDate
+            };
+            return new Talon
+            {
+                Admission_Date = Date_for_admission,
+                Admission_Time = Time_for_admission,
+                kabinet = this.kabinet,
+                medic = this.medic
+            };
         }
     }
 }

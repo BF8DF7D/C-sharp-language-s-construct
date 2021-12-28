@@ -20,28 +20,42 @@ namespace zadanie_labN6
             Console.WriteLine($" Изменённое значение №1    : {prosrtuda.GetName()}");
             Console.WriteLine($" Значение №2               : {otravlenie.GetName()}\n");
 
-            prosrtuda.SetDisease();
-            Console.WriteLine();
-            otravlenie.SetDisease();
-            Console.WriteLine();
-            prosrtuda.PrintInfo();
-
-            Console.WriteLine("\n");
+            RefOutTest Test = new RefOutTest();
+            int uref = 0;
+            int uout;
+            Test.UseOut(out uout);
+            Console.WriteLine($" Значение uout после метода : {uout}");
+            Test.UseRef(ref uref);
 
             Doctor doctor = new Doctor();
             doctor.SetDoctor();
             Console.WriteLine();
             doctor.PrintInfo();
             Console.WriteLine("\n");
-            doctor.fio.Last = "Демидов";
-            doctor.fio.Patronynic = "Сергеевич";
-            Console.WriteLine($"ФИО доктора [изменённое]: {doctor.fio.Full}\n");
+            doctor.Fio.Last = "Демидов";
+            doctor.Fio.Patronynic = "Сергеевич";
+            Console.WriteLine($"ФИО доктора [изменённое]: {doctor.Fio.Full}\n");
+
             Console.WriteLine("\n");
 
-            Talon talon = new Talon();
+            Talon talon = doctor.CreateTalon();
             talon.SetTalon(doctor);
-            Console.WriteLine();
             talon.PrintInfo();
+            Console.WriteLine();
+            Talon sumtime = talon + "23.23";
+            if (sumtime != null)
+                sumtime.PrintInfo();
+            Console.WriteLine();
+            (talon++).PrintInfo();
+            Console.WriteLine();
+            (++talon).PrintInfo();
+            Console.WriteLine("\n");
+
+            prosrtuda.SetDisease();
+            Console.WriteLine();
+            otravlenie.SetDisease();
+            Console.WriteLine();
+            prosrtuda.PrintInfo();
 
             Console.WriteLine("\n");
 
@@ -62,7 +76,7 @@ namespace zadanie_labN6
 
             bolnoi.PrintInfo();
 
-            Console.WriteLine(); 
+            Console.WriteLine();
             bolnoi.DeleteDiagnosis(0);
             bolnoi.PrintInfo();
 

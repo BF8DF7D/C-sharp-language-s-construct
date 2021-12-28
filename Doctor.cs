@@ -8,18 +8,19 @@ namespace zadanie_labN6
 {
     class Doctor
     {
-        private FIO Fio;
+        private FIO fio;
         private string dolgnost;
-        public FIO fio
+        internal FIO Fio
         {
-            get => Fio;
+            get => fio;
         }
+
 
         public void SetDoctor()
         {
-            Fio = new FIO();
+            fio = new FIO();
             Console.WriteLine(" <Ввод информации о докторе>");
-            Fio.SetFormat();
+            fio.SetFormat();
             Console.Write(" Должность: ");
             dolgnost = Console.ReadLine();
             Console.WriteLine(" <Ввод завершён>");
@@ -29,9 +30,15 @@ namespace zadanie_labN6
             Console.WriteLine($"| {GetFIO().GetFullName(), 45} | {GetDolgnost(), 20} |");
         }
 
+        public Talon CreateTalon()
+        {
+            Talon newtalon = new();
+            newtalon.SetTalon(this);
+            return newtalon;
+        }
         public FIO GetFIO()
         {
-            return Fio;
+            return fio;
         }
         public string GetDolgnost()
         {
@@ -40,7 +47,7 @@ namespace zadanie_labN6
 
         public Doctor()
         {
-            Fio = null;
+            fio = null;
         }
     }
 }

@@ -39,7 +39,6 @@ namespace zadanie_labN6
             Console.WriteLine("\n");
 
             Talon talon = doctor.CreateTalon();
-            talon.SetTalon(doctor);
             talon.PrintInfo();
             Console.WriteLine();
             Talon sumtime = talon + "23.23";
